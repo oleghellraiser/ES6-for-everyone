@@ -351,12 +351,14 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 var autoCarry = function autoCarry(func) {
-    if (func && func.length === 1) {
-        var result = func.call(undefined, Math.floor(Math.random() * 100));
-        return result;
-    } else {
-        var carriedFunc = func.bind(undefined, Math.floor(Math.random() * 100));
-        return carriedFunc;
+    if (typeof func === 'function') {
+        if (func.length === 1) {
+            var result = func.call(undefined, Math.floor(Math.random() * 100));
+            return result;
+        } else {
+            var carriedFunc = func.bind(undefined, Math.floor(Math.random() * 100));
+            return carriedFunc;
+        }
     }
 };
 
